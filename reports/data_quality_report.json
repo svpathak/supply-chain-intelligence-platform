@@ -1,0 +1,490 @@
+{
+  "report_version": "1.0",
+  "scope": "Standalone checks against raw CSV files; no ingestion or database required.",
+  "input_directory": "data/raw",
+  "datasets": {
+    "ports": {
+      "file": "ports.csv",
+      "rows": 25,
+      "columns": [
+        "port_code",
+        "port_name",
+        "country",
+        "region",
+        "timezone",
+        "avg_congestion_score"
+      ]
+    },
+    "shipments": {
+      "file": "shipments.csv",
+      "rows": 5028,
+      "columns": [
+        "shipment_id",
+        "customer_id",
+        "origin_port",
+        "destination_port",
+        "vessel_id",
+        "booking_date",
+        "planned_departure",
+        "actual_departure",
+        "planned_arrival",
+        "actual_arrival",
+        "container_count",
+        "cargo_type",
+        "weight_tons",
+        "status"
+      ]
+    },
+    "port_events": {
+      "file": "port_events.csv",
+      "rows": 25000,
+      "columns": [
+        "event_id",
+        "event_timestamp",
+        "port_code",
+        "vessel_id",
+        "event_type",
+        "delay_minutes",
+        "notes"
+      ]
+    }
+  },
+  "summary": {
+    "checks_executed": 38,
+    "checks_with_findings": 20,
+    "critical_checks_with_findings": 5,
+    "warning_checks_with_findings": 14,
+    "info_checks_with_findings": 1
+  },
+  "findings": [
+    {
+      "check_name": "ports.required_columns_present",
+      "dataset": "ports",
+      "rows_affected": 0,
+      "total_rows": 25,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; required columns are present.",
+      "detection_rule": "Compare CSV headers with the required ports schema.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "ports.exact_duplicate_rows",
+      "dataset": "ports",
+      "rows_affected": 0,
+      "total_rows": 25,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no exact duplicate rows found.",
+      "detection_rule": "Count rows identical across every supplied column.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.required_columns_present",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; required columns are present.",
+      "detection_rule": "Compare CSV headers with the required shipments schema.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.exact_duplicate_rows",
+      "dataset": "shipments",
+      "rows_affected": 8,
+      "total_rows": 5028,
+      "percentage_of_total": 0.16,
+      "severity": "warning",
+      "recommended_action": "Retain an audit copy, then deduplicate exact repeated records if the dataset grain confirms they are redundant.",
+      "detection_rule": "Count rows identical across every supplied column.",
+      "disposition": "deduplicate_with_audit"
+    },
+    {
+      "check_name": "shipments.actual_arrival.timestamp_parse_failures",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse actual_arrival with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.actual_departure.timestamp_parse_failures",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse actual_departure with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.booking_date.timestamp_parse_failures",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse booking_date with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.planned_arrival.timestamp_parse_failures",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse planned_arrival with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.planned_departure.timestamp_parse_failures",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse planned_departure with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "port_events.required_columns_present",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; required columns are present.",
+      "detection_rule": "Compare CSV headers with the required port_events schema.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "port_events.exact_duplicate_rows",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no exact duplicate rows found.",
+      "detection_rule": "Count rows identical across every supplied column.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "port_events.event_timestamp.timestamp_parse_failures",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated values parse as timestamps.",
+      "detection_rule": "Parse event_timestamp with pandas.to_datetime(errors='coerce'); count non-null source values that become null.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "ports.missing_country",
+      "dataset": "ports",
+      "rows_affected": 1,
+      "total_rows": 25,
+      "percentage_of_total": 4.0,
+      "severity": "warning",
+      "recommended_action": "Flag for reference-data enrichment; do not infer a country from the port code.",
+      "detection_rule": "Count null or blank values in country.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "ports.duplicate_port_code",
+      "dataset": "ports",
+      "rows_affected": 0,
+      "total_rows": 25,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; port_code is unique.",
+      "detection_rule": "Count every row whose port_code occurs more than once.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.missing_actual_departure",
+      "dataset": "shipments",
+      "rows_affected": 349,
+      "total_rows": 5028,
+      "percentage_of_total": 6.94,
+      "severity": "warning",
+      "recommended_action": "Flag as an unobserved milestone; resolve against shipment lifecycle/status before imputing.",
+      "detection_rule": "Count null or blank values in actual_departure.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.missing_actual_arrival",
+      "dataset": "shipments",
+      "rows_affected": 349,
+      "total_rows": 5028,
+      "percentage_of_total": 6.94,
+      "severity": "warning",
+      "recommended_action": "Flag as an unobserved milestone; resolve against shipment lifecycle/status before imputing.",
+      "detection_rule": "Count null or blank values in actual_arrival.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.missing_cargo_type",
+      "dataset": "shipments",
+      "rows_affected": 15,
+      "total_rows": 5028,
+      "percentage_of_total": 0.3,
+      "severity": "warning",
+      "recommended_action": "Flag and request source correction; do not invent a cargo classification.",
+      "detection_rule": "Count null or blank values in cargo_type.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.missing_weight_tons",
+      "dataset": "shipments",
+      "rows_affected": 73,
+      "total_rows": 5028,
+      "percentage_of_total": 1.45,
+      "severity": "warning",
+      "recommended_action": "Flag for source correction; do not impute a physical weight without a documented rule.",
+      "detection_rule": "Count null or blank values in weight_tons.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.missing_status",
+      "dataset": "shipments",
+      "rows_affected": 54,
+      "total_rows": 5028,
+      "percentage_of_total": 1.07,
+      "severity": "warning",
+      "recommended_action": "Flag for lifecycle reconciliation; preserve the raw status value.",
+      "detection_rule": "Count null or blank values in status.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.repeated_shipment_id",
+      "dataset": "shipments",
+      "rows_affected": 56,
+      "total_rows": 5028,
+      "percentage_of_total": 1.11,
+      "severity": "critical",
+      "recommended_action": "Quarantine or reconcile conflicting versions using an authoritative update timestamp/source rule; do not silently select a record.",
+      "detection_rule": "Count all rows in repeated shipment_id groups; classify a group as conflicting when non-key payloads differ.",
+      "disposition": "quarantine",
+      "duplicate_key_groups": 28,
+      "conflicting_key_groups": 20
+    },
+    {
+      "check_name": "shipments.negative_weight",
+      "dataset": "shipments",
+      "rows_affected": 36,
+      "total_rows": 5028,
+      "percentage_of_total": 0.72,
+      "severity": "warning",
+      "recommended_action": "Quarantine or correct from the source system; physical shipment weight cannot be negative.",
+      "detection_rule": "Numeric weight_tons < 0.",
+      "disposition": "quarantine"
+    },
+    {
+      "check_name": "shipments.non_positive_container_count",
+      "dataset": "shipments",
+      "rows_affected": 23,
+      "total_rows": 5028,
+      "percentage_of_total": 0.46,
+      "severity": "warning",
+      "recommended_action": "Flag for source review; confirm whether zero-container shipments are valid before rejecting them.",
+      "detection_rule": "Numeric container_count <= 0.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.cargo_type_noncanonical_format",
+      "dataset": "shipments",
+      "rows_affected": 261,
+      "total_rows": 5028,
+      "percentage_of_total": 5.19,
+      "severity": "warning",
+      "recommended_action": "Normalize only through an explicit approved mapping; preserve the original value for audit.",
+      "detection_rule": "Compare populated cargo_type values with strip()+title(); this is a formatting heuristic, not an accepted-value taxonomy.",
+      "disposition": "normalize_with_mapping"
+    },
+    {
+      "check_name": "shipments.status_noncanonical_format",
+      "dataset": "shipments",
+      "rows_affected": 58,
+      "total_rows": 5028,
+      "percentage_of_total": 1.15,
+      "severity": "warning",
+      "recommended_action": "Preserve raw values and define an explicit lifecycle mapping with the source owner; do not merge COMPLETE and COMPLETED without confirmation.",
+      "detection_rule": "Compare populated status values with strip()+upper(); semantic label mapping is intentionally not inferred.",
+      "disposition": "normalize_with_mapping"
+    },
+    {
+      "check_name": "shipments.booking_after_planned_departure",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no chronology violations found.",
+      "detection_rule": "Booking should not occur after planned departure.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.planned_arrival_before_planned_departure",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no chronology violations found.",
+      "detection_rule": "Planned arrival should not precede planned departure.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.actual_departure_before_booking",
+      "dataset": "shipments",
+      "rows_affected": 39,
+      "total_rows": 5028,
+      "percentage_of_total": 0.78,
+      "severity": "warning",
+      "recommended_action": "Flag affected records and verify timestamp semantics/timezones with the source; do not auto-shift timestamps.",
+      "detection_rule": "Actual departure should not precede booking time.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "shipments.actual_arrival_before_actual_departure",
+      "dataset": "shipments",
+      "rows_affected": 0,
+      "total_rows": 5028,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no chronology violations found.",
+      "detection_rule": "Actual arrival should not precede actual departure.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "shipments.origin_port_not_in_ports_reference",
+      "dataset": "shipments",
+      "rows_affected": 42,
+      "total_rows": 5028,
+      "percentage_of_total": 0.84,
+      "severity": "critical",
+      "recommended_action": "Quarantine or correct unknown/missing port references against the authoritative port master; do not fabricate port mappings.",
+      "detection_rule": "Compare origin_port values with ports.port_code; null/blank references are also unresolved.",
+      "disposition": "quarantine"
+    },
+    {
+      "check_name": "shipments.destination_port_not_in_ports_reference",
+      "dataset": "shipments",
+      "rows_affected": 55,
+      "total_rows": 5028,
+      "percentage_of_total": 1.09,
+      "severity": "critical",
+      "recommended_action": "Quarantine or correct unknown/missing port references against the authoritative port master; do not fabricate port mappings.",
+      "detection_rule": "Compare destination_port values with ports.port_code; null/blank references are also unresolved.",
+      "disposition": "quarantine"
+    },
+    {
+      "check_name": "shipments.any_port_reference_unresolved",
+      "dataset": "shipments",
+      "rows_affected": 95,
+      "total_rows": 5028,
+      "percentage_of_total": 1.89,
+      "severity": "critical",
+      "recommended_action": "Use this union count for shipment-level impact; do not add origin and destination counts because a row can fail both.",
+      "detection_rule": "Count unique shipment rows failing either origin or destination port lookup.",
+      "disposition": "quarantine"
+    },
+    {
+      "check_name": "port_events.missing_event_type",
+      "dataset": "port_events",
+      "rows_affected": 140,
+      "total_rows": 25000,
+      "percentage_of_total": 0.56,
+      "severity": "warning",
+      "recommended_action": "Flag for source correction; retain the event row because the event payload may still be useful.",
+      "detection_rule": "Count null or blank values in event_type.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "port_events.missing_port_code",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "critical",
+      "recommended_action": "Quarantine or correct unresolved event port references using the port master.",
+      "detection_rule": "Count null or blank values in port_code.",
+      "disposition": "flag"
+    },
+    {
+      "check_name": "port_events.repeated_event_id",
+      "dataset": "port_events",
+      "rows_affected": 206,
+      "total_rows": 25000,
+      "percentage_of_total": 0.82,
+      "severity": "critical",
+      "recommended_action": "event_id is not a safe deduplication key in this feed; retain distinct payloads and establish a composite/source event key.",
+      "detection_rule": "Count all rows in repeated event_id groups; compare non-key payloads to identify conflicting groups.",
+      "disposition": "retain_and_reconcile_key",
+      "duplicate_key_groups": 103,
+      "conflicting_key_groups": 103
+    },
+    {
+      "check_name": "port_events.port_code_not_in_ports_reference",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; all populated event port references resolve.",
+      "detection_rule": "Compare port_events.port_code with ports.port_code.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "port_events.negative_delay_minutes",
+      "dataset": "port_events",
+      "rows_affected": 0,
+      "total_rows": 25000,
+      "percentage_of_total": 0.0,
+      "severity": "info",
+      "recommended_action": "No action; no negative delay values found.",
+      "detection_rule": "Numeric delay_minutes < 0.",
+      "disposition": "none"
+    },
+    {
+      "check_name": "port_events.missing_notes",
+      "dataset": "port_events",
+      "rows_affected": 1913,
+      "total_rows": 25000,
+      "percentage_of_total": 7.65,
+      "severity": "info",
+      "recommended_action": "Treat notes as optional descriptive text unless a downstream use case makes them mandatory.",
+      "detection_rule": "Count null or blank notes; reported for completeness visibility, not classified as a defect.",
+      "disposition": "informational_only"
+    },
+    {
+      "check_name": "timestamps.timezone_metadata_not_declared",
+      "dataset": "shipments+port_events",
+      "rows_affected": 49442,
+      "total_rows": 49442,
+      "percentage_of_total": 100.0,
+      "severity": "warning",
+      "recommended_action": "Document whether source timestamps are UTC or local wall time and add explicit offsets at the source boundary before cross-zone instant comparisons.",
+      "detection_rule": "CSV timestamp values contain no explicit UTC offset/timezone metadata; all populated values are treated as naive.",
+      "disposition": "document_and_resolve_semantics"
+    }
+  ],
+  "interpretation_notes": [
+    "Rows affected is measured against the dataset named by each check; timezone metadata uses the count of populated timestamp values as its denominator.",
+    "Checks can overlap. For example, exact duplicate shipment rows also participate in repeated shipment_id groups; do not sum finding counts to estimate unique bad rows.",
+    "Formatting checks are heuristics, not semantic mappings. Raw category values are not modified.",
+    "A finding is a detection, not an automatic cleaning operation. Recommended actions are advisory and source data is never changed.",
+    "The assignment states there are twelve intentional issues but does not enumerate them; this report records reproducible observations and additional diagnostics without claiming every finding maps one-to-one to an intentional issue."
+  ]
+}

@@ -1,0 +1,640 @@
+{
+  "methodology": "One model family only: Logistic Regression. Compare feature groups on chronological validation data. Preprocessing is fitted only on the training partition. No test metrics are used for feature selection.",
+  "preparation": {
+    "source_shipment_rows": 5028,
+    "exact_duplicate_rows_collapsed": 8,
+    "ambiguous_shipment_id_groups_excluded": 20,
+    "ambiguous_shipment_id_rows_excluded": 40,
+    "raw_missing_actual_arrival_rows": 349,
+    "missing_actual_arrival_rows_excluded_after_duplicate_quarantine": 346,
+    "missing_arrival_rows_in_exact_duplicate_copies_removed": 1,
+    "missing_arrival_rows_in_ambiguous_id_quarantine": 2,
+    "missing_booking_or_planned_schedule_rows_excluded": 0,
+    "invalid_origin_or_destination_port_rows_excluded": 89,
+    "negative_weight_predictors_set_missing": 31,
+    "non_positive_container_count_predictors_set_missing": 21,
+    "eligible_labelled_rows": 4545,
+    "positive_rows": 1836,
+    "negative_rows": 2709,
+    "positive_rate": 0.403960396039604,
+    "booking_date_min": "2024-06-01T07:00:00",
+    "booking_date_max": "2025-10-14T19:00:00"
+  },
+  "split": {
+    "strategy": "chronological_by_booking_date",
+    "fractions_requested": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15000000000000005
+    },
+    "partitions": {
+      "train": {
+        "rows": 3181,
+        "positive_rows": 1295,
+        "positive_rate": 0.4071046840616158,
+        "booking_date_min": "2024-06-01T07:00:00",
+        "booking_date_max": "2025-05-18T16:00:00"
+      },
+      "validation": {
+        "rows": 675,
+        "positive_rows": 268,
+        "positive_rate": 0.397037037037037,
+        "booking_date_min": "2025-05-18T19:00:00",
+        "booking_date_max": "2025-08-03T00:00:00"
+      },
+      "test": {
+        "rows": 689,
+        "positive_rows": 273,
+        "positive_rate": 0.39622641509433965,
+        "booking_date_min": "2025-08-03T07:00:00",
+        "booking_date_max": "2025-10-14T19:00:00"
+      }
+    }
+  },
+  "feature_groups": {
+    "schedule_calendar": [
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week"
+    ],
+    "route_identity": [
+      "origin_port",
+      "destination_port"
+    ],
+    "port_context": [
+      "origin_region",
+      "destination_region",
+      "origin_congestion_score",
+      "destination_congestion_score"
+    ],
+    "shipment_profile": [
+      "container_count",
+      "weight_tons",
+      "cargo_type"
+    ],
+    "full": [
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_port",
+      "destination_port",
+      "origin_region",
+      "destination_region",
+      "origin_congestion_score",
+      "destination_congestion_score",
+      "container_count",
+      "weight_tons",
+      "cargo_type"
+    ],
+    "without_schedule_calendar": [
+      "origin_port",
+      "destination_port",
+      "origin_region",
+      "destination_region",
+      "origin_congestion_score",
+      "destination_congestion_score",
+      "container_count",
+      "weight_tons",
+      "cargo_type"
+    ],
+    "without_route_identity": [
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_region",
+      "destination_region",
+      "origin_congestion_score",
+      "destination_congestion_score",
+      "container_count",
+      "weight_tons",
+      "cargo_type"
+    ],
+    "without_port_context": [
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_port",
+      "destination_port",
+      "container_count",
+      "weight_tons",
+      "cargo_type"
+    ],
+    "without_shipment_profile": [
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_port",
+      "destination_port",
+      "origin_region",
+      "destination_region",
+      "origin_congestion_score",
+      "destination_congestion_score"
+    ]
+  },
+  "validation_results": {
+    "schedule_calendar": {
+      "feature_count": 6,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month",
+        "booking_day_of_week",
+        "planned_departure_month",
+        "planned_departure_day_of_week"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 675,
+          "1": 0
+        },
+        "accuracy": 0.6029629629629629,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.4816091532509443,
+        "average_precision": 0.40009380601152167,
+        "log_loss": 0.6736356449671902,
+        "confusion_matrix": {
+          "tn": 407,
+          "fp": 0,
+          "fn": 268,
+          "tp": 0
+        }
+      }
+    },
+    "route_identity": {
+      "feature_count": 2,
+      "features": [
+        "origin_port",
+        "destination_port"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 623,
+          "1": 52
+        },
+        "accuracy": 0.5792592592592593,
+        "precision": 0.34615384615384615,
+        "recall": 0.06716417910447761,
+        "f1": 0.1125,
+        "roc_auc": 0.4910337746158641,
+        "average_precision": 0.3848468104166733,
+        "log_loss": 0.6819801335666685,
+        "confusion_matrix": {
+          "tn": 373,
+          "fp": 34,
+          "fn": 250,
+          "tp": 18
+        }
+      }
+    },
+    "port_context": {
+      "feature_count": 4,
+      "features": [
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 675,
+          "1": 0
+        },
+        "accuracy": 0.6029629629629629,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.4918405515420441,
+        "average_precision": 0.4034056215018248,
+        "log_loss": 0.6732776768856986,
+        "confusion_matrix": {
+          "tn": 407,
+          "fp": 0,
+          "fn": 268,
+          "tp": 0
+        }
+      }
+    },
+    "shipment_profile": {
+      "feature_count": 3,
+      "features": [
+        "container_count",
+        "weight_tons",
+        "cargo_type"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 645,
+          "1": 30
+        },
+        "accuracy": 0.5940740740740741,
+        "precision": 0.4,
+        "recall": 0.04477611940298507,
+        "f1": 0.08053691275167785,
+        "roc_auc": 0.4774790054640801,
+        "average_precision": 0.39024521004021706,
+        "log_loss": 0.677732747869901,
+        "confusion_matrix": {
+          "tn": 389,
+          "fp": 18,
+          "fn": 256,
+          "tp": 12
+        }
+      }
+    },
+    "full": {
+      "feature_count": 15,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month",
+        "booking_day_of_week",
+        "planned_departure_month",
+        "planned_departure_day_of_week",
+        "origin_port",
+        "destination_port",
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score",
+        "container_count",
+        "weight_tons",
+        "cargo_type"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 601,
+          "1": 74
+        },
+        "accuracy": 0.5762962962962963,
+        "precision": 0.3783783783783784,
+        "recall": 0.1044776119402985,
+        "f1": 0.16374269005847952,
+        "roc_auc": 0.48097656679746237,
+        "average_precision": 0.38553861522338584,
+        "log_loss": 0.6886163724710845,
+        "confusion_matrix": {
+          "tn": 361,
+          "fp": 46,
+          "fn": 240,
+          "tp": 28
+        }
+      }
+    },
+    "without_schedule_calendar": {
+      "feature_count": 9,
+      "features": [
+        "origin_port",
+        "destination_port",
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score",
+        "container_count",
+        "weight_tons",
+        "cargo_type"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 598,
+          "1": 77
+        },
+        "accuracy": 0.5718518518518518,
+        "precision": 0.36363636363636365,
+        "recall": 0.1044776119402985,
+        "f1": 0.16231884057971013,
+        "roc_auc": 0.4872290879753567,
+        "average_precision": 0.3845154129053708,
+        "log_loss": 0.687654974828411,
+        "confusion_matrix": {
+          "tn": 358,
+          "fp": 49,
+          "fn": 240,
+          "tp": 28
+        }
+      }
+    },
+    "without_route_identity": {
+      "feature_count": 13,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month",
+        "booking_day_of_week",
+        "planned_departure_month",
+        "planned_departure_day_of_week",
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score",
+        "container_count",
+        "weight_tons",
+        "cargo_type"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 642,
+          "1": 33
+        },
+        "accuracy": 0.5925925925925926,
+        "precision": 0.3939393939393939,
+        "recall": 0.048507462686567165,
+        "f1": 0.08637873754152824,
+        "roc_auc": 0.47810700795775424,
+        "average_precision": 0.3955838558084594,
+        "log_loss": 0.6799946105999279,
+        "confusion_matrix": {
+          "tn": 387,
+          "fp": 20,
+          "fn": 255,
+          "tp": 13
+        }
+      }
+    },
+    "without_port_context": {
+      "feature_count": 11,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month",
+        "booking_day_of_week",
+        "planned_departure_month",
+        "planned_departure_day_of_week",
+        "origin_port",
+        "destination_port",
+        "container_count",
+        "weight_tons",
+        "cargo_type"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 602,
+          "1": 73
+        },
+        "accuracy": 0.5748148148148148,
+        "precision": 0.3698630136986301,
+        "recall": 0.10074626865671642,
+        "f1": 0.15835777126099707,
+        "roc_auc": 0.480784040485533,
+        "average_precision": 0.38549490730763647,
+        "log_loss": 0.6885629929028876,
+        "confusion_matrix": {
+          "tn": 361,
+          "fp": 46,
+          "fn": 241,
+          "tp": 27
+        }
+      }
+    },
+    "without_shipment_profile": {
+      "feature_count": 12,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month",
+        "booking_day_of_week",
+        "planned_departure_month",
+        "planned_departure_day_of_week",
+        "origin_port",
+        "destination_port",
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 627,
+          "1": 48
+        },
+        "accuracy": 0.5762962962962963,
+        "precision": 0.3125,
+        "recall": 0.055970149253731345,
+        "f1": 0.0949367088607595,
+        "roc_auc": 0.4856338699622282,
+        "average_precision": 0.3836408183266282,
+        "log_loss": 0.6834297107970901,
+        "confusion_matrix": {
+          "tn": 374,
+          "fp": 33,
+          "fn": 253,
+          "tp": 15
+        }
+      }
+    },
+    "full_cyclical_calendar": {
+      "feature_count": 19,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "origin_port",
+        "destination_port",
+        "origin_region",
+        "destination_region",
+        "origin_congestion_score",
+        "destination_congestion_score",
+        "container_count",
+        "weight_tons",
+        "cargo_type",
+        "booking_month_sin",
+        "booking_month_cos",
+        "booking_dow_sin",
+        "booking_dow_cos",
+        "planned_departure_month_sin",
+        "planned_departure_month_cos",
+        "planned_departure_dow_sin",
+        "planned_departure_dow_cos"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 561,
+          "1": 114
+        },
+        "accuracy": 0.5555555555555556,
+        "precision": 0.35964912280701755,
+        "recall": 0.15298507462686567,
+        "f1": 0.21465968586387435,
+        "roc_auc": 0.4782445267519895,
+        "average_precision": 0.38417509835784336,
+        "log_loss": 0.6913818919756015,
+        "confusion_matrix": {
+          "tn": 334,
+          "fp": 73,
+          "fn": 227,
+          "tp": 41
+        }
+      },
+      "description": "Full feature set with month and weekday integers replaced by sine/cosine pairs"
+    },
+    "schedule_calendar_cyclical": {
+      "feature_count": 10,
+      "features": [
+        "planned_transit_days",
+        "booking_lead_days",
+        "booking_month_sin",
+        "booking_month_cos",
+        "booking_dow_sin",
+        "booking_dow_cos",
+        "planned_departure_month_sin",
+        "planned_departure_month_cos",
+        "planned_departure_dow_sin",
+        "planned_departure_dow_cos"
+      ],
+      "validation": {
+        "rows": 675,
+        "actual_positive_rate": 0.397037037037037,
+        "predicted_class_counts": {
+          "0": 675,
+          "1": 0
+        },
+        "accuracy": 0.6029629629629629,
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1": 0.0,
+        "roc_auc": 0.4892368623711907,
+        "average_precision": 0.39277018145562326,
+        "log_loss": 0.6764728860015699,
+        "confusion_matrix": {
+          "tn": 407,
+          "fp": 0,
+          "fn": 268,
+          "tp": 0
+        }
+      },
+      "description": "Schedule/calendar-only features with cyclical month and weekday encoding"
+    }
+  },
+  "random_50_percent_baseline_validation": {
+    "rows": 675,
+    "actual_positive_rate": 0.397037037037037,
+    "predicted_class_counts": {
+      "0": 331,
+      "1": 344
+    },
+    "accuracy": 0.46370370370370373,
+    "precision": 0.3633720930232558,
+    "recall": 0.4664179104477612,
+    "f1": 0.4084967320261438,
+    "roc_auc": 0.4542704169569841,
+    "average_precision": 0.3625294033243933,
+    "log_loss": 1.0632333187914227,
+    "confusion_matrix": {
+      "tn": 188,
+      "fp": 219,
+      "fn": 143,
+      "tp": 125
+    },
+    "expected_roc_auc": 0.5,
+    "strategy": "independent uniform random score; classify positive at score >= 0.5; seed=42"
+  },
+  "validation_ranking": [
+    {
+      "configuration": "port_context",
+      "roc_auc": 0.4918405515420441,
+      "average_precision": 0.4034056215018248,
+      "log_loss": 0.6732776768856986
+    },
+    {
+      "configuration": "route_identity",
+      "roc_auc": 0.4910337746158641,
+      "average_precision": 0.3848468104166733,
+      "log_loss": 0.6819801335666685
+    },
+    {
+      "configuration": "schedule_calendar_cyclical",
+      "roc_auc": 0.4892368623711907,
+      "average_precision": 0.39277018145562326,
+      "log_loss": 0.6764728860015699
+    },
+    {
+      "configuration": "without_schedule_calendar",
+      "roc_auc": 0.4872290879753567,
+      "average_precision": 0.3845154129053708,
+      "log_loss": 0.687654974828411
+    },
+    {
+      "configuration": "without_shipment_profile",
+      "roc_auc": 0.4856338699622282,
+      "average_precision": 0.3836408183266282,
+      "log_loss": 0.6834297107970901
+    },
+    {
+      "configuration": "schedule_calendar",
+      "roc_auc": 0.4816091532509443,
+      "average_precision": 0.40009380601152167,
+      "log_loss": 0.6736356449671902
+    },
+    {
+      "configuration": "full",
+      "roc_auc": 0.48097656679746237,
+      "average_precision": 0.38553861522338584,
+      "log_loss": 0.6886163724710845
+    },
+    {
+      "configuration": "without_port_context",
+      "roc_auc": 0.480784040485533,
+      "average_precision": 0.38549490730763647,
+      "log_loss": 0.6885629929028876
+    },
+    {
+      "configuration": "full_cyclical_calendar",
+      "roc_auc": 0.4782445267519895,
+      "average_precision": 0.38417509835784336,
+      "log_loss": 0.6913818919756015
+    },
+    {
+      "configuration": "without_route_identity",
+      "roc_auc": 0.47810700795775424,
+      "average_precision": 0.3955838558084594,
+      "log_loss": 0.6799946105999279
+    },
+    {
+      "configuration": "shipment_profile",
+      "roc_auc": 0.4774790054640801,
+      "average_precision": 0.39024521004021706,
+      "log_loss": 0.677732747869901
+    }
+  ],
+  "best_validation_configuration": "port_context",
+  "best_validation_roc_auc": 0.4918405515420441,
+  "chance_level_roc_auc": 0.5,
+  "any_configuration_beats_chance_on_validation": false,
+  "interpretation": "Feature-group results are exploratory and based on one chronological validation window. A small difference around 0.5 is not evidence of robust predictive signal. Do not select features using the test set.",
+  "test_set_note": "The chronological test period was already inspected during earlier model experiments; it is not a pristine holdout. This analysis does not use test results for feature selection."
+}

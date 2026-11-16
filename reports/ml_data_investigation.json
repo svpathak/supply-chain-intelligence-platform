@@ -1,0 +1,58 @@
+{
+  "source_rows": {
+    "shipments": 5028,
+    "ports": 25,
+    "port_events": 25000
+  },
+  "missing_arrival_investigation": {
+    "shipments_missing_actual_arrival": 349,
+    "missing_shipments_with_any_vessel_destination_arrival_event": 286,
+    "missing_shipments_with_vessel_destination_arrival_event_14_days_before_to_30_days_after_plan": 57,
+    "matching_event_count_per_shipment_median": 1.0,
+    "matching_event_count_per_shipment_max": 8,
+    "reason_not_imputed": "port_events has no shipment_id or leg identifier; vessel + destination matches are ambiguous and cannot establish which shipment arrived at a given timestamp"
+  },
+  "port_event_grain_investigation": {
+    "distinct_event_vessels": 82,
+    "distinct_event_ports": 25,
+    "vessel_count_with_events_at_all_reference_ports": 82,
+    "total_vessels_with_events": 82,
+    "interpretation": "events are port-level and vessel-linked, not shipment- or leg-linked; all event vessels appear at all reference ports, so vessel/port coincidence is not a reliable shipment join"
+  },
+  "intermediate_stop_investigation": {
+    "shipment_columns": [
+      "shipment_id",
+      "customer_id",
+      "origin_port",
+      "destination_port",
+      "vessel_id",
+      "booking_date",
+      "planned_departure",
+      "actual_departure",
+      "planned_arrival",
+      "actual_arrival",
+      "container_count",
+      "cargo_type",
+      "weight_tons",
+      "status"
+    ],
+    "shipment_has_intermediate_stop_fields": false,
+    "shipment_has_leg_identifier": false,
+    "event_has_shipment_identifier": false,
+    "event_has_leg_identifier": false,
+    "assumption": "predict destination arrival delay only; intermediate stop schedules and outcomes are not represented at shipment grain"
+  },
+  "status_target_diagnostic": {
+    "cross_tab_status_by_target": {
+      "DELAYED": {
+        "0": 0,
+        "1": 1901
+      },
+      "DELIVERED": {
+        "0": 2778,
+        "1": 0
+      }
+    },
+    "modeling_decision": "exclude status: observed source values reveal the target almost perfectly and are not legitimate booking-time predictors"
+  }
+}

@@ -1,0 +1,45 @@
+services:
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["python", "scripts/run_pipeline.py", "--data-dir", "/app/data/raw", "--db", "/app/var/warehouse.sqlite3"]
+    environment:
+      DATABASE_PATH: /app/var/warehouse.sqlite3
+      MODEL_ARTIFACT_DIR: /app/artifacts
+      LOG_LEVEL: INFO
+    volumes:
+      - warehouse_data:/app/var
+    restart: "no"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: ["uvicorn", "app.api.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    environment:
+      DATABASE_PATH: /app/var/warehouse.sqlite3
+      MODEL_ARTIFACT_DIR: /app/artifacts
+      LOG_LEVEL: INFO
+      API_VERSION: 0.1.0
+    volumes:
+      - warehouse_data:/app/var
+    depends_on:
+      pipeline:
+        condition: service_completed_successfully
+    ports:
+      - "8000:8000"
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=3)"
+      interval: 15s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    restart: unless-stopped
+
+volumes:
+  warehouse_data:

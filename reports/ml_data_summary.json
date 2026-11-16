@@ -1,0 +1,1276 @@
+{
+  "source_data": {
+    "shipments": {
+      "rows": 5028,
+      "columns": 14,
+      "column_profile": {
+        "shipment_id": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 5000,
+          "top_values": {
+            "SHP-00814": 2,
+            "SHP-03887": 2,
+            "SHP-01588": 2,
+            "SHP-01379": 2,
+            "SHP-02142": 2,
+            "SHP-00077": 2,
+            "SHP-02290": 2,
+            "SHP-02149": 2,
+            "SHP-03324": 2,
+            "SHP-00010": 2
+          }
+        },
+        "customer_id": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 251,
+          "top_values": {
+            "CUST-1014": 32,
+            "CUST-1226": 31,
+            "CUST-1043": 31,
+            "CUST-1117": 30,
+            "CUST-1173": 28,
+            "CUST-1096": 27,
+            "CUST-1098": 27,
+            "CUST-1141": 27,
+            "CUST-1209": 27,
+            "CUST-1186": 27
+          }
+        },
+        "origin_port": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 28,
+          "top_values": {
+            "USLAX": 232,
+            "NLRTM": 217,
+            "MYPKG": 217,
+            "AEDXB": 216,
+            "INMUN": 216,
+            "HKHKG": 215,
+            "ESVLC": 210,
+            "CNNGB": 209,
+            "JPYOK": 203,
+            "USSAV": 201
+          }
+        },
+        "destination_port": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 28,
+          "top_values": {
+            "MYPKG": 230,
+            "ESVLC": 218,
+            "AEDXB": 218,
+            "GBFXT": 216,
+            "CNNGB": 210,
+            "KRPUS": 208,
+            "INNSA": 207,
+            "USLGB": 204,
+            "BRSSZ": 203,
+            "USLAX": 203
+          }
+        },
+        "vessel_id": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 80,
+          "top_values": {
+            "VSL-0070": 88,
+            "VSL-0066": 79,
+            "VSL-0045": 79,
+            "VSL-0067": 77,
+            "VSL-0033": 77,
+            "VSL-0078": 77,
+            "VSL-0069": 75,
+            "VSL-0011": 75,
+            "VSL-0017": 73,
+            "VSL-0049": 73
+          }
+        },
+        "booking_date": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 4117,
+          "top_values": {
+            "2024-08-25 12:00:00": 4,
+            "2025-08-30 11:00:00": 4,
+            "2025-10-13 01:00:00": 4,
+            "2025-08-16 20:00:00": 4,
+            "2025-10-01 04:00:00": 4,
+            "2024-08-12 17:00:00": 4,
+            "2025-01-05 22:00:00": 4,
+            "2025-02-27 13:00:00": 4,
+            "2025-01-17 21:00:00": 4,
+            "2024-08-31 22:00:00": 3
+          }
+        },
+        "planned_departure": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 4127,
+          "top_values": {
+            "2025-10-10 09:00:00": 4,
+            "2025-06-12 21:00:00": 4,
+            "2025-04-30 22:00:00": 4,
+            "2025-09-24 19:00:00": 4,
+            "2024-08-15 01:00:00": 4,
+            "2024-09-15 19:00:00": 4,
+            "2025-03-06 07:00:00": 4,
+            "2025-04-28 13:00:00": 3,
+            "2024-10-31 05:00:00": 3,
+            "2024-09-10 03:00:00": 3
+          }
+        },
+        "actual_departure": {
+          "dtype": "object",
+          "missing_count": 349,
+          "missing_pct": 6.941,
+          "distinct_non_null": 3899,
+          "top_values": {
+            "nan": 349,
+            "2024-09-10 11:00:00": 4,
+            "2024-11-10 11:00:00": 4,
+            "2025-07-04 23:00:00": 4,
+            "2024-09-19 16:00:00": 3,
+            "2024-06-30 08:00:00": 3,
+            "2024-09-16 02:00:00": 3,
+            "2025-05-22 18:00:00": 3,
+            "2025-07-07 04:00:00": 3,
+            "2024-06-20 05:00:00": 3
+          }
+        },
+        "planned_arrival": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 4133,
+          "top_values": {
+            "2024-10-27 11:00:00": 5,
+            "2024-07-20 09:00:00": 4,
+            "2025-06-23 04:00:00": 4,
+            "2024-10-31 02:00:00": 4,
+            "2024-08-15 02:00:00": 4,
+            "2025-07-06 19:00:00": 4,
+            "2025-06-01 06:00:00": 4,
+            "2025-03-18 00:00:00": 4,
+            "2025-04-16 09:00:00": 4,
+            "2025-02-23 01:00:00": 3
+          }
+        },
+        "actual_arrival": {
+          "dtype": "object",
+          "missing_count": 349,
+          "missing_pct": 6.941,
+          "distinct_non_null": 3847,
+          "top_values": {
+            "nan": 349,
+            "2025-04-16 01:00:00": 5,
+            "2024-08-08 00:00:00": 5,
+            "2025-03-17 17:00:00": 4,
+            "2024-11-02 20:00:00": 4,
+            "2024-12-06 23:00:00": 4,
+            "2025-07-08 23:00:00": 4,
+            "2024-10-31 03:00:00": 4,
+            "2025-02-26 06:00:00": 4,
+            "2024-11-05 10:00:00": 4
+          }
+        },
+        "container_count": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 58,
+          "describe": {
+            "count": 5028.0,
+            "mean": 22.858194112967382,
+            "std": 45.5361925984611,
+            "min": 0.0,
+            "25%": 10.0,
+            "50%": 21.0,
+            "75%": 30.0,
+            "max": 996.0
+          }
+        },
+        "cargo_type": {
+          "dtype": "object",
+          "missing_count": 15,
+          "missing_pct": 0.298,
+          "distinct_non_null": 17,
+          "top_values": {
+            "Furniture": 500,
+            "Automotive Parts": 488,
+            "Machinery": 481,
+            "Pharmaceuticals": 479,
+            "Electronics": 477,
+            "Chemicals": 476,
+            "Consumer Goods": 466,
+            "Apparel": 465,
+            "Food & Beverage": 463,
+            "Raw Materials": 457
+          }
+        },
+        "weight_tons": {
+          "dtype": "float64",
+          "missing_count": 73,
+          "missing_pct": 1.452,
+          "distinct_non_null": 4894,
+          "describe": {
+            "count": 4955.0,
+            "mean": 1415.7473037336026,
+            "std": 797.9078785935092,
+            "min": -197.87,
+            "25%": 733.425,
+            "50%": 1411.52,
+            "75%": 2109.52,
+            "max": 2797.37
+          }
+        },
+        "status": {
+          "dtype": "object",
+          "missing_count": 54,
+          "missing_pct": 1.074,
+          "distinct_non_null": 6,
+          "top_values": {
+            "DELIVERED": 2778,
+            "DELAYED": 1901,
+            "CANCELLED": 203,
+            "nan": 54,
+            "COMPLETED": 34,
+            "Complete": 30,
+            "delivered": 28
+          }
+        }
+      }
+    },
+    "ports": {
+      "rows": 25,
+      "columns": 6,
+      "column_profile": {
+        "port_code": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 25,
+          "top_values": {
+            "SGSIN": 1,
+            "CNSHA": 1,
+            "CNSZX": 1,
+            "CNNGB": 1,
+            "HKHKG": 1,
+            "KRPUS": 1,
+            "JPYOK": 1,
+            "INNSA": 1,
+            "INMUN": 1,
+            "AEDXB": 1
+          }
+        },
+        "port_name": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 25,
+          "top_values": {
+            "Singapore": 1,
+            "Shanghai": 1,
+            "Shenzhen": 1,
+            "Ningbo": 1,
+            "Hong Kong": 1,
+            "Busan": 1,
+            "Yokohama": 1,
+            "Nhava Sheva": 1,
+            "Mundra": 1,
+            "Jebel Ali": 1
+          }
+        },
+        "country": {
+          "dtype": "object",
+          "missing_count": 1,
+          "missing_pct": 4.0,
+          "distinct_non_null": 18,
+          "top_values": {
+            "USA": 4,
+            "China": 3,
+            "India": 2,
+            "Hong Kong": 1,
+            "Singapore": 1,
+            "Japan": 1,
+            "South Korea": 1,
+            "Netherlands": 1,
+            "Germany": 1,
+            "nan": 1
+          }
+        },
+        "region": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 4,
+          "top_values": {
+            "APAC": 12,
+            "EUR": 5,
+            "AMER": 5,
+            "MEA": 3
+          }
+        },
+        "timezone": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 12,
+          "top_values": {
+            "UTC+8": 6,
+            "UTC+1": 4,
+            "UTC+5:30": 2,
+            "UTC+9": 2,
+            "UTC-5": 2,
+            "UTC-8": 2,
+            "UTC+2": 2,
+            "UTC+4": 1,
+            "UTC+0": 1,
+            "UTC-3": 1
+          }
+        },
+        "avg_congestion_score": {
+          "dtype": "float64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 16,
+          "describe": {
+            "count": 25.0,
+            "mean": 0.6884,
+            "std": 0.08330066026148891,
+            "min": 0.55,
+            "25%": 0.62,
+            "50%": 0.68,
+            "75%": 0.73,
+            "max": 0.85
+          }
+        }
+      }
+    },
+    "port_events": {
+      "rows": 25000,
+      "columns": 7,
+      "column_profile": {
+        "event_id": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 24897,
+          "top_values": {
+            "EVT-011393": 2,
+            "EVT-003926": 2,
+            "EVT-001941": 2,
+            "EVT-015545": 2,
+            "EVT-006454": 2,
+            "EVT-001757": 2,
+            "EVT-008104": 2,
+            "EVT-000279": 2,
+            "EVT-002914": 2,
+            "EVT-002786": 2
+          }
+        },
+        "event_timestamp": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 24544,
+          "top_values": {
+            "2025-05-14 11:32:00": 3,
+            "2025-04-16 16:33:00": 3,
+            "2024-11-07 20:56:00": 3,
+            "2025-09-06 11:24:00": 3,
+            "2024-12-07 10:02:00": 3,
+            "2025-04-24 23:23:00": 3,
+            "2025-06-21 14:16:00": 3,
+            "2024-07-09 03:38:00": 3,
+            "2025-09-29 23:33:00": 2,
+            "2024-11-30 12:02:00": 2
+          }
+        },
+        "port_code": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 25,
+          "top_values": {
+            "SGSIN": 1065,
+            "PKKAR": 1061,
+            "INMUN": 1040,
+            "EGPSD": 1030,
+            "USLAX": 1018,
+            "JPYOK": 1016,
+            "NLRTM": 1011,
+            "KRPUS": 1004,
+            "CNSZX": 1002,
+            "THBKK": 1001
+          }
+        },
+        "vessel_id": {
+          "dtype": "object",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 82,
+          "top_values": {
+            "VSL-0069": 370,
+            "VSL-0062": 344,
+            "VSL-0004": 344,
+            "VSL-0056": 338,
+            "VSL-0070": 335,
+            "VSL-0052": 331,
+            "VSL-0006": 330,
+            "VSL-0048": 329,
+            "VSL-0008": 328,
+            "VSL-0007": 328
+          }
+        },
+        "event_type": {
+          "dtype": "object",
+          "missing_count": 140,
+          "missing_pct": 0.56,
+          "distinct_non_null": 7,
+          "top_values": {
+            "INSPECTION": 3671,
+            "ARRIVAL": 3654,
+            "LOADING_COMPLETE": 3580,
+            "CUSTOMS_CLEARED": 3567,
+            "BERTHED": 3509,
+            "DEPARTURE": 3475,
+            "DELAYED": 3404,
+            "nan": 140
+          }
+        },
+        "delay_minutes": {
+          "dtype": "int64",
+          "missing_count": 0,
+          "missing_pct": 0.0,
+          "distinct_non_null": 301,
+          "describe": {
+            "count": 25000.0,
+            "mean": 26.62972,
+            "std": 60.126590631746616,
+            "min": 0.0,
+            "25%": 0.0,
+            "50%": 0.0,
+            "75%": 24.0,
+            "max": 300.0
+          }
+        },
+        "notes": {
+          "dtype": "object",
+          "missing_count": 1913,
+          "missing_pct": 7.652,
+          "distinct_non_null": 12,
+          "top_values": {
+            "Weather delay \u2013 storm": 2045,
+            "Priority cargo re-sequencing": 2007,
+            "High tide window missed": 1984,
+            "Reefer unit fault": 1943,
+            "Normal operations": 1943,
+            "Port strike affecting berth 4": 1931,
+            "nan": 1913,
+            "Equipment failure \u2013 conveyor belt": 1911,
+            "Weather delay \u2013 fog": 1908,
+            "Berth congestion \u2013 3 vessels waiting": 1897
+          }
+        }
+      }
+    }
+  },
+  "prepared_modelling_population": {
+    "rows": 4545,
+    "target_counts": {
+      "0_on_time_or_within_24h": 2709,
+      "1_more_than_24h_late": 1836
+    },
+    "positive_rate": 0.403960396039604,
+    "unique_origin_destination_pairs": 599,
+    "known_port_codes": 25,
+    "booking_date_min": "2024-06-01T07:00:00",
+    "booking_date_max": "2025-10-14T19:00:00",
+    "preparation_counts": {
+      "source_shipment_rows": 5028,
+      "exact_duplicate_rows_collapsed": 8,
+      "ambiguous_shipment_id_groups_excluded": 20,
+      "ambiguous_shipment_id_rows_excluded": 40,
+      "raw_missing_actual_arrival_rows": 349,
+      "missing_actual_arrival_rows_excluded_after_duplicate_quarantine": 346,
+      "missing_arrival_rows_in_exact_duplicate_copies_removed": 1,
+      "missing_arrival_rows_in_ambiguous_id_quarantine": 2,
+      "missing_booking_or_planned_schedule_rows_excluded": 0,
+      "invalid_origin_or_destination_port_rows_excluded": 89,
+      "negative_weight_predictors_set_missing": 31,
+      "non_positive_container_count_predictors_set_missing": 21,
+      "eligible_labelled_rows": 4545,
+      "positive_rows": 1836,
+      "negative_rows": 2709,
+      "positive_rate": 0.403960396039604,
+      "booking_date_min": "2024-06-01T07:00:00",
+      "booking_date_max": "2025-10-14T19:00:00"
+    },
+    "chronological_split": {
+      "strategy": "chronological_by_booking_date",
+      "fractions_requested": {
+        "train": 0.7,
+        "validation": 0.15,
+        "test": 0.15000000000000005
+      },
+      "partitions": {
+        "train": {
+          "rows": 3181,
+          "positive_rows": 1295,
+          "positive_rate": 0.4071046840616158,
+          "booking_date_min": "2024-06-01T07:00:00",
+          "booking_date_max": "2025-05-18T16:00:00"
+        },
+        "validation": {
+          "rows": 675,
+          "positive_rows": 268,
+          "positive_rate": 0.397037037037037,
+          "booking_date_min": "2025-05-18T19:00:00",
+          "booking_date_max": "2025-08-03T00:00:00"
+        },
+        "test": {
+          "rows": 689,
+          "positive_rows": 273,
+          "positive_rate": 0.39622641509433965,
+          "booking_date_min": "2025-08-03T07:00:00",
+          "booking_date_max": "2025-10-14T19:00:00"
+        }
+      }
+    }
+  },
+  "feature_contract": {
+    "feature_count": 15,
+    "features": [
+      "container_count",
+      "weight_tons",
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_congestion_score",
+      "destination_congestion_score",
+      "origin_port",
+      "destination_port",
+      "cargo_type",
+      "origin_region",
+      "destination_region"
+    ],
+    "numeric_features": [
+      "container_count",
+      "weight_tons",
+      "planned_transit_days",
+      "booking_lead_days",
+      "booking_month",
+      "booking_day_of_week",
+      "planned_departure_month",
+      "planned_departure_day_of_week",
+      "origin_congestion_score",
+      "destination_congestion_score"
+    ],
+    "categorical_features": [
+      "origin_port",
+      "destination_port",
+      "cargo_type",
+      "origin_region",
+      "destination_region"
+    ],
+    "categorical_cardinality_after_cleaning": {
+      "origin_port": {
+        "distinct_values": 25,
+        "values": [
+          "AEDXB",
+          "BEANR",
+          "BRSSZ",
+          "CNNGB",
+          "CNSHA",
+          "CNSZX",
+          "DEHAM",
+          "EGPSD",
+          "ESVLC",
+          "GBFXT",
+          "HKHKG",
+          "INMUN",
+          "INNSA",
+          "JPYOK",
+          "KRPUS",
+          "MYPKG",
+          "NLRTM",
+          "PKKAR",
+          "SGSIN",
+          "THBKK",
+          "USLAX",
+          "USLGB",
+          "USNYC",
+          "USSAV",
+          "ZADUR"
+        ]
+      },
+      "destination_port": {
+        "distinct_values": 25,
+        "values": [
+          "AEDXB",
+          "BEANR",
+          "BRSSZ",
+          "CNNGB",
+          "CNSHA",
+          "CNSZX",
+          "DEHAM",
+          "EGPSD",
+          "ESVLC",
+          "GBFXT",
+          "HKHKG",
+          "INMUN",
+          "INNSA",
+          "JPYOK",
+          "KRPUS",
+          "MYPKG",
+          "NLRTM",
+          "PKKAR",
+          "SGSIN",
+          "THBKK",
+          "USLAX",
+          "USLGB",
+          "USNYC",
+          "USSAV",
+          "ZADUR"
+        ]
+      },
+      "cargo_type": {
+        "distinct_values": 10,
+        "values": [
+          "APPAREL",
+          "AUTOMOTIVE PARTS",
+          "CHEMICALS",
+          "CONSUMER GOODS",
+          "ELECTRONICS",
+          "FOOD & BEVERAGE",
+          "FURNITURE",
+          "MACHINERY",
+          "PHARMACEUTICALS",
+          "RAW MATERIALS"
+        ]
+      },
+      "origin_region": {
+        "distinct_values": 4,
+        "values": [
+          "AMER",
+          "APAC",
+          "EUR",
+          "MEA"
+        ]
+      },
+      "destination_region": {
+        "distinct_values": 4,
+        "values": [
+          "AMER",
+          "APAC",
+          "EUR",
+          "MEA"
+        ]
+      }
+    },
+    "numeric_summary": {
+      "container_count": {
+        "count": 4524.0,
+        "mean": 22.902298850574713,
+        "std": 45.226320152215706,
+        "min": 1.0,
+        "25%": 10.0,
+        "50%": 21.0,
+        "75%": 30.25,
+        "max": 996.0
+      },
+      "weight_tons": {
+        "count": 4444.0,
+        "mean": 1422.647405490549,
+        "std": 789.2298075969961,
+        "min": 50.31,
+        "25%": 744.1475,
+        "50%": 1411.67,
+        "75%": 2108.7325,
+        "max": 2797.37
+      },
+      "planned_transit_days": {
+        "count": 4545.0,
+        "mean": 19.32893289328933,
+        "std": 9.862068611530376,
+        "min": 3.0,
+        "25%": 10.0,
+        "50%": 20.0,
+        "75%": 28.0,
+        "max": 35.0
+      },
+      "booking_lead_days": {
+        "count": 4545.0,
+        "mean": 8.564136413641364,
+        "std": 3.4432507669444115,
+        "min": 3.0,
+        "25%": 6.0,
+        "50%": 9.0,
+        "75%": 12.0,
+        "max": 14.0
+      },
+      "booking_month": {
+        "count": 4545.0,
+        "mean": 6.832123212321232,
+        "std": 3.0479916475290634,
+        "min": 1.0,
+        "25%": 5.0,
+        "50%": 7.0,
+        "75%": 9.0,
+        "max": 12.0
+      },
+      "booking_day_of_week": {
+        "count": 4545.0,
+        "mean": 3.0475247524752476,
+        "std": 2.0049309073143067,
+        "min": 0.0,
+        "25%": 1.0,
+        "50%": 3.0,
+        "75%": 5.0,
+        "max": 6.0
+      },
+      "planned_departure_month": {
+        "count": 4545.0,
+        "mean": 6.9058305830583055,
+        "std": 3.068313162360177,
+        "min": 1.0,
+        "25%": 5.0,
+        "50%": 7.0,
+        "75%": 9.0,
+        "max": 12.0
+      },
+      "planned_departure_day_of_week": {
+        "count": 4545.0,
+        "mean": 3.0206820682068205,
+        "std": 1.9891904121898905,
+        "min": 0.0,
+        "25%": 1.0,
+        "50%": 3.0,
+        "75%": 5.0,
+        "max": 6.0
+      },
+      "origin_congestion_score": {
+        "count": 4545.0,
+        "mean": 0.6877535753575357,
+        "std": 0.08263082350991155,
+        "min": 0.55,
+        "25%": 0.62,
+        "50%": 0.68,
+        "75%": 0.73,
+        "max": 0.85
+      },
+      "destination_congestion_score": {
+        "count": 4545.0,
+        "mean": 0.6871903190319032,
+        "std": 0.08061114000045977,
+        "min": 0.55,
+        "25%": 0.62,
+        "50%": 0.68,
+        "75%": 0.73,
+        "max": 0.85
+      }
+    },
+    "numeric_feature_target_spearman_correlations_descriptive_only": {
+      "container_count": -0.018362227512120292,
+      "weight_tons": -0.0001100526039217411,
+      "planned_transit_days": -0.0008487219133034061,
+      "booking_lead_days": -0.02035585766510921,
+      "booking_month": -0.013606599716442408,
+      "booking_day_of_week": -0.0014259936590238509,
+      "planned_departure_month": -0.014605221079726881,
+      "planned_departure_day_of_week": 0.009466869068124877,
+      "origin_congestion_score": 0.028621691050986643,
+      "destination_congestion_score": -0.0014497409777968896
+    },
+    "categorical_feature_target_rates_descriptive_only": {
+      "origin_port": [
+        {
+          "category": "USLAX",
+          "rows": 218,
+          "late_rate": 0.43119266055045874
+        },
+        {
+          "category": "AEDXB",
+          "rows": 205,
+          "late_rate": 0.4097560975609756
+        },
+        {
+          "category": "MYPKG",
+          "rows": 199,
+          "late_rate": 0.4020100502512563
+        },
+        {
+          "category": "HKHKG",
+          "rows": 196,
+          "late_rate": 0.3622448979591837
+        },
+        {
+          "category": "INMUN",
+          "rows": 194,
+          "late_rate": 0.4020618556701031
+        },
+        {
+          "category": "NLRTM",
+          "rows": 193,
+          "late_rate": 0.40932642487046633
+        },
+        {
+          "category": "ESVLC",
+          "rows": 190,
+          "late_rate": 0.4105263157894737
+        },
+        {
+          "category": "JPYOK",
+          "rows": 188,
+          "late_rate": 0.3723404255319149
+        },
+        {
+          "category": "CNNGB",
+          "rows": 186,
+          "late_rate": 0.34408602150537637
+        },
+        {
+          "category": "THBKK",
+          "rows": 186,
+          "late_rate": 0.3978494623655914
+        },
+        {
+          "category": "ZADUR",
+          "rows": 185,
+          "late_rate": 0.4
+        },
+        {
+          "category": "EGPSD",
+          "rows": 183,
+          "late_rate": 0.37158469945355194
+        },
+        {
+          "category": "DEHAM",
+          "rows": 183,
+          "late_rate": 0.41530054644808745
+        },
+        {
+          "category": "KRPUS",
+          "rows": 180,
+          "late_rate": 0.4222222222222222
+        },
+        {
+          "category": "USLGB",
+          "rows": 180,
+          "late_rate": 0.48333333333333334
+        },
+        {
+          "category": "CNSHA",
+          "rows": 178,
+          "late_rate": 0.43258426966292135
+        },
+        {
+          "category": "PKKAR",
+          "rows": 177,
+          "late_rate": 0.4293785310734463
+        },
+        {
+          "category": "USSAV",
+          "rows": 176,
+          "late_rate": 0.4034090909090909
+        },
+        {
+          "category": "USNYC",
+          "rows": 175,
+          "late_rate": 0.44
+        },
+        {
+          "category": "SGSIN",
+          "rows": 168,
+          "late_rate": 0.34523809523809523
+        },
+        {
+          "category": "CNSZX",
+          "rows": 165,
+          "late_rate": 0.48484848484848486
+        },
+        {
+          "category": "INNSA",
+          "rows": 163,
+          "late_rate": 0.43558282208588955
+        },
+        {
+          "category": "BEANR",
+          "rows": 161,
+          "late_rate": 0.3105590062111801
+        },
+        {
+          "category": "GBFXT",
+          "rows": 161,
+          "late_rate": 0.37267080745341613
+        },
+        {
+          "category": "BRSSZ",
+          "rows": 155,
+          "late_rate": 0.4064516129032258
+        }
+      ],
+      "destination_port": [
+        {
+          "category": "MYPKG",
+          "rows": 214,
+          "late_rate": 0.411214953271028
+        },
+        {
+          "category": "ESVLC",
+          "rows": 199,
+          "late_rate": 0.4221105527638191
+        },
+        {
+          "category": "USNYC",
+          "rows": 195,
+          "late_rate": 0.4
+        },
+        {
+          "category": "AEDXB",
+          "rows": 192,
+          "late_rate": 0.4010416666666667
+        },
+        {
+          "category": "GBFXT",
+          "rows": 192,
+          "late_rate": 0.4635416666666667
+        },
+        {
+          "category": "INNSA",
+          "rows": 191,
+          "late_rate": 0.39267015706806285
+        },
+        {
+          "category": "CNNGB",
+          "rows": 190,
+          "late_rate": 0.45263157894736844
+        },
+        {
+          "category": "CNSZX",
+          "rows": 189,
+          "late_rate": 0.42328042328042326
+        },
+        {
+          "category": "DEHAM",
+          "rows": 188,
+          "late_rate": 0.39893617021276595
+        },
+        {
+          "category": "KRPUS",
+          "rows": 188,
+          "late_rate": 0.39893617021276595
+        },
+        {
+          "category": "BRSSZ",
+          "rows": 187,
+          "late_rate": 0.36363636363636365
+        },
+        {
+          "category": "BEANR",
+          "rows": 186,
+          "late_rate": 0.40860215053763443
+        },
+        {
+          "category": "HKHKG",
+          "rows": 183,
+          "late_rate": 0.48633879781420764
+        },
+        {
+          "category": "USLGB",
+          "rows": 183,
+          "late_rate": 0.4207650273224044
+        },
+        {
+          "category": "SGSIN",
+          "rows": 182,
+          "late_rate": 0.3956043956043956
+        },
+        {
+          "category": "ZADUR",
+          "rows": 181,
+          "late_rate": 0.35359116022099446
+        },
+        {
+          "category": "USLAX",
+          "rows": 180,
+          "late_rate": 0.3888888888888889
+        },
+        {
+          "category": "JPYOK",
+          "rows": 175,
+          "late_rate": 0.34285714285714286
+        },
+        {
+          "category": "USSAV",
+          "rows": 175,
+          "late_rate": 0.4
+        },
+        {
+          "category": "INMUN",
+          "rows": 173,
+          "late_rate": 0.3930635838150289
+        },
+        {
+          "category": "CNSHA",
+          "rows": 165,
+          "late_rate": 0.4
+        },
+        {
+          "category": "PKKAR",
+          "rows": 165,
+          "late_rate": 0.38181818181818183
+        },
+        {
+          "category": "THBKK",
+          "rows": 164,
+          "late_rate": 0.4268292682926829
+        },
+        {
+          "category": "EGPSD",
+          "rows": 154,
+          "late_rate": 0.37662337662337664
+        },
+        {
+          "category": "NLRTM",
+          "rows": 154,
+          "late_rate": 0.37662337662337664
+        }
+      ],
+      "cargo_type": [
+        {
+          "category": "FURNITURE",
+          "rows": 507,
+          "late_rate": 0.40433925049309666
+        },
+        {
+          "category": "AUTOMOTIVE PARTS",
+          "rows": 489,
+          "late_rate": 0.40081799591002043
+        },
+        {
+          "category": "CHEMICALS",
+          "rows": 472,
+          "late_rate": 0.3898305084745763
+        },
+        {
+          "category": "MACHINERY",
+          "rows": 461,
+          "late_rate": 0.39913232104121477
+        },
+        {
+          "category": "ELECTRONICS",
+          "rows": 461,
+          "late_rate": 0.37310195227765725
+        },
+        {
+          "category": "APPAREL",
+          "rows": 442,
+          "late_rate": 0.40271493212669685
+        },
+        {
+          "category": "PHARMACEUTICALS",
+          "rows": 440,
+          "late_rate": 0.41363636363636364
+        },
+        {
+          "category": "FOOD & BEVERAGE",
+          "rows": 439,
+          "late_rate": 0.40774487471526194
+        },
+        {
+          "category": "CONSUMER GOODS",
+          "rows": 426,
+          "late_rate": 0.39436619718309857
+        },
+        {
+          "category": "RAW MATERIALS",
+          "rows": 408,
+          "late_rate": 0.46078431372549017
+        }
+      ],
+      "origin_region": [
+        {
+          "category": "APAC",
+          "rows": 2180,
+          "late_rate": 0.4013761467889908
+        },
+        {
+          "category": "AMER",
+          "rows": 904,
+          "late_rate": 0.4336283185840708
+        },
+        {
+          "category": "EUR",
+          "rows": 888,
+          "late_rate": 0.38626126126126126
+        },
+        {
+          "category": "MEA",
+          "rows": 573,
+          "late_rate": 0.3944153577661431
+        }
+      ],
+      "destination_region": [
+        {
+          "category": "APAC",
+          "rows": 2179,
+          "late_rate": 0.40936209270307483
+        },
+        {
+          "category": "AMER",
+          "rows": 920,
+          "late_rate": 0.39456521739130435
+        },
+        {
+          "category": "EUR",
+          "rows": 919,
+          "late_rate": 0.41566920565832427
+        },
+        {
+          "category": "MEA",
+          "rows": 527,
+          "late_rate": 0.3776091081593928
+        }
+      ]
+    },
+    "top_20_routes_by_sample_count_descriptive_only": [
+      {
+        "origin_port": "PKKAR",
+        "destination_port": "BEANR",
+        "rows": 18,
+        "late_rate": 0.3888888888888889
+      },
+      {
+        "origin_port": "USLAX",
+        "destination_port": "PKKAR",
+        "rows": 17,
+        "late_rate": 0.35294117647058826
+      },
+      {
+        "origin_port": "INNSA",
+        "destination_port": "MYPKG",
+        "rows": 17,
+        "late_rate": 0.4117647058823529
+      },
+      {
+        "origin_port": "USLAX",
+        "destination_port": "USNYC",
+        "rows": 16,
+        "late_rate": 0.375
+      },
+      {
+        "origin_port": "CNSHA",
+        "destination_port": "CNSZX",
+        "rows": 15,
+        "late_rate": 0.4
+      },
+      {
+        "origin_port": "THBKK",
+        "destination_port": "HKHKG",
+        "rows": 15,
+        "late_rate": 0.5333333333333333
+      },
+      {
+        "origin_port": "ZADUR",
+        "destination_port": "USLGB",
+        "rows": 15,
+        "late_rate": 0.26666666666666666
+      },
+      {
+        "origin_port": "ZADUR",
+        "destination_port": "KRPUS",
+        "rows": 15,
+        "late_rate": 0.4666666666666667
+      },
+      {
+        "origin_port": "HKHKG",
+        "destination_port": "ZADUR",
+        "rows": 15,
+        "late_rate": 0.26666666666666666
+      },
+      {
+        "origin_port": "INMUN",
+        "destination_port": "CNNGB",
+        "rows": 15,
+        "late_rate": 0.6666666666666666
+      },
+      {
+        "origin_port": "USLAX",
+        "destination_port": "CNSZX",
+        "rows": 14,
+        "late_rate": 0.42857142857142855
+      },
+      {
+        "origin_port": "CNNGB",
+        "destination_port": "ESVLC",
+        "rows": 14,
+        "late_rate": 0.5
+      },
+      {
+        "origin_port": "USLGB",
+        "destination_port": "GBFXT",
+        "rows": 13,
+        "late_rate": 0.6153846153846154
+      },
+      {
+        "origin_port": "USLAX",
+        "destination_port": "ZADUR",
+        "rows": 13,
+        "late_rate": 0.5384615384615384
+      },
+      {
+        "origin_port": "CNNGB",
+        "destination_port": "USLGB",
+        "rows": 13,
+        "late_rate": 0.46153846153846156
+      },
+      {
+        "origin_port": "NLRTM",
+        "destination_port": "ESVLC",
+        "rows": 13,
+        "late_rate": 0.5384615384615384
+      },
+      {
+        "origin_port": "MYPKG",
+        "destination_port": "USSAV",
+        "rows": 13,
+        "late_rate": 0.6153846153846154
+      },
+      {
+        "origin_port": "DEHAM",
+        "destination_port": "USSAV",
+        "rows": 13,
+        "late_rate": 0.3076923076923077
+      },
+      {
+        "origin_port": "JPYOK",
+        "destination_port": "PKKAR",
+        "rows": 13,
+        "late_rate": 0.23076923076923078
+      },
+      {
+        "origin_port": "ESVLC",
+        "destination_port": "CNNGB",
+        "rows": 13,
+        "late_rate": 0.3076923076923077
+      }
+    ],
+    "encoding": "OneHotEncoder(handle_unknown='ignore') for categorical fields; numeric fields imputed and scaled for Logistic Regression/SVM. Port codes are nominal identifiers, not ordinal or geographic coordinates.",
+    "port_encoding_decision": "One-hot encode origin_port and destination_port. Do not label-encode port codes as ordered integers: no meaningful distance or ordering is encoded by the alphanumeric code. Geographic distance would require coordinates or authoritative route-distance data, which are not supplied."
+  }
+}

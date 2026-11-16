@@ -1,0 +1,297 @@
+{
+  "generated_at_utc": "2026-11-16T05:47:16.338192+00:00",
+  "experiment_status": "experimental_not_promoted",
+  "preparation": {
+    "source_shipment_rows": 5028,
+    "exact_duplicate_rows_collapsed": 8,
+    "ambiguous_shipment_id_groups_excluded": 20,
+    "ambiguous_shipment_id_rows_excluded": 40,
+    "raw_missing_actual_arrival_rows": 349,
+    "missing_actual_arrival_rows_excluded_after_duplicate_quarantine": 346,
+    "missing_arrival_rows_in_exact_duplicate_copies_removed": 1,
+    "missing_arrival_rows_in_ambiguous_id_quarantine": 2,
+    "missing_booking_or_planned_schedule_rows_excluded": 0,
+    "invalid_origin_or_destination_port_rows_excluded": 89,
+    "negative_weight_predictors_set_missing": 31,
+    "non_positive_container_count_predictors_set_missing": 21,
+    "eligible_labelled_rows": 4545,
+    "positive_rows": 1836,
+    "negative_rows": 2709,
+    "positive_rate": 0.403960396039604,
+    "booking_date_min": "2024-06-01T07:00:00",
+    "booking_date_max": "2025-10-14T19:00:00"
+  },
+  "split": {
+    "strategy": "chronological_by_booking_date",
+    "fractions_requested": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15000000000000005
+    },
+    "partitions": {
+      "train": {
+        "rows": 3181,
+        "positive_rows": 1295,
+        "positive_rate": 0.4071046840616158,
+        "booking_date_min": "2024-06-01T07:00:00",
+        "booking_date_max": "2025-05-18T16:00:00"
+      },
+      "validation": {
+        "rows": 675,
+        "positive_rows": 268,
+        "positive_rate": 0.397037037037037,
+        "booking_date_min": "2025-05-18T19:00:00",
+        "booking_date_max": "2025-08-03T00:00:00"
+      },
+      "test": {
+        "rows": 689,
+        "positive_rows": 273,
+        "positive_rate": 0.39622641509433965,
+        "booking_date_min": "2025-08-03T07:00:00",
+        "booking_date_max": "2025-10-14T19:00:00"
+      }
+    }
+  },
+  "architecture": {
+    "input_features_before_preprocessing": 15,
+    "input_dimensions_after_preprocessing": 80,
+    "hidden_layers": 1,
+    "hidden_units": 4,
+    "hidden_activation": "ReLU",
+    "output": "one sigmoid probability for is_late_over_24h",
+    "conceptual_progression": "linear Logistic Regression -> one small nonlinear hidden representation -> logistic probability output",
+    "optimizer": "Adam",
+    "learning_rate_init": 0.001,
+    "l2_regularization_alpha": 0.01,
+    "max_iter": 2000,
+    "early_stopping": false,
+    "random_state": 42,
+    "training_iterations": 1271,
+    "final_training_loss": 0.6119798346368702,
+    "convergence_warnings": []
+  },
+  "preprocessing": "train-fitted median imputation + missing indicators + standard scaling; UNKNOWN imputation + one-hot encoding",
+  "model": {
+    "name": "one_hidden_layer_mlp_4_units",
+    "validation": {
+      "rows": 675,
+      "threshold": 0.5,
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      },
+      "predicted_class_counts": {
+        "0": 471,
+        "1": 204
+      },
+      "accuracy": 0.5170370370370371,
+      "precision": 0.35784313725490197,
+      "recall": 0.27238805970149255,
+      "f1": 0.3093220338983051,
+      "roc_auc": 0.490034471377755,
+      "average_precision": 0.39786147865780064,
+      "log_loss": 0.7628833659251022,
+      "confusion_matrix": {
+        "true_negative": 276,
+        "false_positive": 131,
+        "false_negative": 195,
+        "true_positive": 73
+      },
+      "random_50_percent_baseline": {
+        "rows": 675,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 407,
+          "1": 268
+        },
+        "predicted_class_counts": {
+          "0": 331,
+          "1": 344
+        },
+        "accuracy": 0.46370370370370373,
+        "precision": 0.3633720930232558,
+        "recall": 0.4664179104477612,
+        "f1": 0.4084967320261438,
+        "roc_auc": 0.4542704169569841,
+        "average_precision": 0.3625294033243933,
+        "log_loss": 1.0632333187914227,
+        "confusion_matrix": {
+          "true_negative": 188,
+          "false_positive": 219,
+          "false_negative": 143,
+          "true_positive": 125
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      }
+    },
+    "test": {
+      "rows": 689,
+      "threshold": 0.5,
+      "actual_class_counts": {
+        "0": 416,
+        "1": 273
+      },
+      "predicted_class_counts": {
+        "0": 515,
+        "1": 174
+      },
+      "accuracy": 0.5515239477503628,
+      "precision": 0.39655172413793105,
+      "recall": 0.25274725274725274,
+      "f1": 0.3087248322147651,
+      "roc_auc": 0.48621970977740214,
+      "average_precision": 0.3959853703079368,
+      "log_loss": 0.745167211138804,
+      "confusion_matrix": {
+        "true_negative": 311,
+        "false_positive": 105,
+        "false_negative": 204,
+        "true_positive": 69
+      },
+      "random_50_percent_baseline": {
+        "rows": 689,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 416,
+          "1": 273
+        },
+        "predicted_class_counts": {
+          "0": 341,
+          "1": 348
+        },
+        "accuracy": 0.4876632801161103,
+        "precision": 0.3850574712643678,
+        "recall": 0.4908424908424908,
+        "f1": 0.43156199677938806,
+        "roc_auc": 0.5024478726401803,
+        "average_precision": 0.40764113745339337,
+        "log_loss": 0.9943742530042144,
+        "confusion_matrix": {
+          "true_negative": 202,
+          "false_positive": 214,
+          "false_negative": 139,
+          "true_positive": 134
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      }
+    },
+    "artifact": "artifacts/delay_mlp_experiment.joblib"
+  },
+  "reference_model": {
+    "name": "logistic_regression",
+    "source_report": "reports/model_evaluation.json",
+    "validation": {
+      "rows": 675,
+      "threshold": 0.5,
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      },
+      "predicted_class_counts": {
+        "0": 601,
+        "1": 74
+      },
+      "accuracy": 0.5762962962962963,
+      "precision": 0.3783783783783784,
+      "recall": 0.1044776119402985,
+      "f1": 0.16374269005847952,
+      "roc_auc": 0.48097656679746237,
+      "average_precision": 0.38553861522338584,
+      "log_loss": 0.6886163724710846,
+      "confusion_matrix": {
+        "true_negative": 361,
+        "false_positive": 46,
+        "false_negative": 240,
+        "true_positive": 28
+      },
+      "random_50_percent_baseline": {
+        "rows": 675,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 407,
+          "1": 268
+        },
+        "predicted_class_counts": {
+          "0": 331,
+          "1": 344
+        },
+        "accuracy": 0.46370370370370373,
+        "precision": 0.3633720930232558,
+        "recall": 0.4664179104477612,
+        "f1": 0.4084967320261438,
+        "roc_auc": 0.4542704169569841,
+        "average_precision": 0.3625294033243933,
+        "log_loss": 1.0632333187914227,
+        "confusion_matrix": {
+          "true_negative": 188,
+          "false_positive": 219,
+          "false_negative": 143,
+          "true_positive": 125
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      }
+    },
+    "test": {
+      "rows": 689,
+      "threshold": 0.5,
+      "actual_class_counts": {
+        "0": 416,
+        "1": 273
+      },
+      "predicted_class_counts": {
+        "0": 625,
+        "1": 64
+      },
+      "accuracy": 0.5950653120464441,
+      "precision": 0.453125,
+      "recall": 0.10622710622710622,
+      "f1": 0.17210682492581603,
+      "roc_auc": 0.49504261763877144,
+      "average_precision": 0.41159455046618243,
+      "log_loss": 0.682297894406963,
+      "confusion_matrix": {
+        "true_negative": 381,
+        "false_positive": 35,
+        "false_negative": 244,
+        "true_positive": 29
+      },
+      "random_50_percent_baseline": {
+        "rows": 689,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 416,
+          "1": 273
+        },
+        "predicted_class_counts": {
+          "0": 341,
+          "1": 348
+        },
+        "accuracy": 0.4876632801161103,
+        "precision": 0.3850574712643678,
+        "recall": 0.4908424908424908,
+        "f1": 0.43156199677938806,
+        "roc_auc": 0.5024478726401803,
+        "average_precision": 0.40764113745339337,
+        "log_loss": 0.9943742530042144,
+        "confusion_matrix": {
+          "true_negative": 202,
+          "false_positive": 214,
+          "false_negative": 139,
+          "true_positive": 134
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      }
+    }
+  },
+  "baseline": "random_50_percent",
+  "test_set_caveat": "The chronological test period has already been inspected in earlier experiments; test metrics are reported for transparency only and must not drive model selection.",
+  "decision_rule": "Do not promote this MLP unless validation discrimination and probability quality meaningfully improve over Logistic Regression and the random no-skill reference, with a plausible predicted-positive distribution."
+}

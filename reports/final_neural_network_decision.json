@@ -1,0 +1,242 @@
+{
+  "generated_at_utc": "2026-11-16T06:09:04.978319+00:00",
+  "status": "completed_not_promoted",
+  "dataset_preparation": {
+    "source_shipment_rows": 5028,
+    "exact_duplicate_rows_collapsed": 8,
+    "ambiguous_shipment_id_groups_excluded": 20,
+    "ambiguous_shipment_id_rows_excluded": 40,
+    "raw_missing_actual_arrival_rows": 349,
+    "missing_actual_arrival_rows_excluded_after_duplicate_quarantine": 346,
+    "missing_arrival_rows_in_exact_duplicate_copies_removed": 1,
+    "missing_arrival_rows_in_ambiguous_id_quarantine": 2,
+    "missing_booking_or_planned_schedule_rows_excluded": 0,
+    "invalid_origin_or_destination_port_rows_excluded": 89,
+    "negative_weight_predictors_set_missing": 31,
+    "non_positive_container_count_predictors_set_missing": 21,
+    "eligible_labelled_rows": 4545,
+    "positive_rows": 1836,
+    "negative_rows": 2709,
+    "positive_rate": 0.403960396039604,
+    "booking_date_min": "2024-06-01T07:00:00",
+    "booking_date_max": "2025-10-14T19:00:00"
+  },
+  "point_in_time_event_audit": {
+    "source_event_rows": 25000,
+    "duplicate_event_id_groups_quarantined": 103,
+    "duplicate_event_id_rows_quarantined": 206,
+    "event_rows_used": 24794,
+    "event_type_missing_rows_retained_for_generic_aggregates": 138,
+    "event_timestamp_min": "2024-06-01T00:02:00",
+    "event_timestamp_max": "2025-10-14T23:55:00",
+    "strict_booking_cutoff": "event_timestamp < booking_date; same-time and future events excluded",
+    "windows_days": [
+      7,
+      30
+    ],
+    "aggregation_grain": "port-level only; no shipment/voyage-leg attribution",
+    "feature_columns": [
+      "origin_events_7d_count",
+      "origin_events_7d_mean_delay_minutes",
+      "origin_events_7d_delayed_count",
+      "origin_events_7d_delayed_rate",
+      "origin_events_30d_count",
+      "origin_events_30d_mean_delay_minutes",
+      "origin_events_30d_delayed_count",
+      "origin_events_30d_delayed_rate",
+      "destination_events_7d_count",
+      "destination_events_7d_mean_delay_minutes",
+      "destination_events_7d_delayed_count",
+      "destination_events_7d_delayed_rate",
+      "destination_events_30d_count",
+      "destination_events_30d_mean_delay_minutes",
+      "destination_events_30d_delayed_count",
+      "destination_events_30d_delayed_rate",
+      "event_observation_7d_coverage",
+      "event_observation_30d_coverage"
+    ],
+    "timestamp_limitation": "Source timestamps are naive and contain no timezone offset; comparisons use source-local naive timestamps without timezone conversion.",
+    "history_coverage_limitation": "Coverage fractions measure elapsed time since the first retained event in this file, not verified source completeness before that date."
+  },
+  "chronological_split": {
+    "strategy": "chronological_by_booking_date",
+    "fractions_requested": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15000000000000005
+    },
+    "partitions": {
+      "train": {
+        "rows": 3181,
+        "positive_rows": 1295,
+        "positive_rate": 0.4071046840616158,
+        "booking_date_min": "2024-06-01T07:00:00",
+        "booking_date_max": "2025-05-18T16:00:00"
+      },
+      "validation": {
+        "rows": 675,
+        "positive_rows": 268,
+        "positive_rate": 0.397037037037037,
+        "booking_date_min": "2025-05-18T19:00:00",
+        "booking_date_max": "2025-08-03T00:00:00"
+      },
+      "test": {
+        "rows": 689,
+        "positive_rows": 273,
+        "positive_rate": 0.39622641509433965,
+        "booking_date_min": "2025-08-03T07:00:00",
+        "booking_date_max": "2025-10-14T19:00:00"
+      }
+    }
+  },
+  "feature_count": 25,
+  "origin_event_features": [
+    "origin_events_7d_count",
+    "origin_events_7d_mean_delay_minutes",
+    "origin_events_7d_delayed_count",
+    "origin_events_7d_delayed_rate",
+    "origin_events_30d_count",
+    "origin_events_30d_mean_delay_minutes",
+    "origin_events_30d_delayed_count",
+    "origin_events_30d_delayed_rate",
+    "event_observation_7d_coverage",
+    "event_observation_30d_coverage"
+  ],
+  "architecture": {
+    "hidden_layers": 1,
+    "candidate_hidden_units": 8,
+    "activation": "ReLU",
+    "output": "sigmoid probability",
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "l2_alpha": 0.01,
+    "early_stopping": false,
+    "random_state": 42,
+    "selection": "single bounded capacity step from 4 to 8 hidden units"
+  },
+  "validation_results": {
+    "mlp_4_units_plus_origin_events": {
+      "rows": 675,
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      },
+      "predicted_class_counts": {
+        "0": 504,
+        "1": 171
+      },
+      "roc_auc": 0.4930690527705453,
+      "average_precision": 0.40954984965556573,
+      "log_loss": 0.76209536612815,
+      "precision": 0.40350877192982454,
+      "recall": 0.2574626865671642,
+      "f1": 0.3143507972665148,
+      "confusion_matrix": {
+        "tn": 305,
+        "fp": 102,
+        "fn": 199,
+        "tp": 69
+      },
+      "random_50_percent_baseline": {
+        "rows": 675,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 407,
+          "1": 268
+        },
+        "predicted_class_counts": {
+          "0": 331,
+          "1": 344
+        },
+        "accuracy": 0.46370370370370373,
+        "precision": 0.3633720930232558,
+        "recall": 0.4664179104477612,
+        "f1": 0.4084967320261438,
+        "roc_auc": 0.4542704169569841,
+        "average_precision": 0.3625294033243933,
+        "log_loss": 1.0632333187914227,
+        "confusion_matrix": {
+          "true_negative": 188,
+          "false_positive": 219,
+          "false_negative": 143,
+          "true_positive": 125
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      },
+      "hidden_units": 4,
+      "training_iterations": 1244,
+      "final_training_loss": 0.5964227641417688,
+      "transformed_dimensions": 94
+    },
+    "mlp_8_units_plus_origin_events": {
+      "rows": 675,
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      },
+      "predicted_class_counts": {
+        "0": 412,
+        "1": 263
+      },
+      "roc_auc": 0.4720470130917892,
+      "average_precision": 0.3740749256877801,
+      "log_loss": 0.9177000205199888,
+      "precision": 0.3726235741444867,
+      "recall": 0.3656716417910448,
+      "f1": 0.3691148775894539,
+      "confusion_matrix": {
+        "tn": 242,
+        "fp": 165,
+        "fn": 170,
+        "tp": 98
+      },
+      "random_50_percent_baseline": {
+        "rows": 675,
+        "threshold": 0.5,
+        "actual_class_counts": {
+          "0": 407,
+          "1": 268
+        },
+        "predicted_class_counts": {
+          "0": 331,
+          "1": 344
+        },
+        "accuracy": 0.46370370370370373,
+        "precision": 0.3633720930232558,
+        "recall": 0.4664179104477612,
+        "f1": 0.4084967320261438,
+        "roc_auc": 0.4542704169569841,
+        "average_precision": 0.3625294033243933,
+        "log_loss": 1.0632333187914227,
+        "confusion_matrix": {
+          "true_negative": 188,
+          "false_positive": 219,
+          "false_negative": 143,
+          "true_positive": 125
+        },
+        "strategy": "independent uniform random score; positive if score >= 0.5",
+        "seed": 42,
+        "expected_roc_auc": 0.5
+      },
+      "hidden_units": 8,
+      "training_iterations": 1503,
+      "final_training_loss": 0.5248822934270074,
+      "transformed_dimensions": 94
+    }
+  },
+  "convergence_warnings": {
+    "mlp_4_units_plus_origin_events": [],
+    "mlp_8_units_plus_origin_events": []
+  },
+  "promotion_rule": "Candidate must beat ROC-AUC 0.5, exceed expected random AP, improve ROC-AUC over 4-unit model, and improve log loss.",
+  "promoted": false,
+  "artifact": "artifacts/delay_mlp_8_units_plus_origin_events_experiment.joblib",
+  "test_policy": "No test metrics used or reported; the chronological test set was previously inspected and is not pristine.",
+  "limitations": [
+    "Port-event features are port-level context, not shipment- or vessel-leg-attributed events.",
+    "Naive source timestamps have no timezone metadata.",
+    "Validation has been reused in earlier experiments; results are exploratory and not an unbiased final estimate."
+  ]
+}

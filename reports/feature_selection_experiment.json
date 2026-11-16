@@ -1,0 +1,293 @@
+{
+  "methodology": {
+    "model_family": "Logistic Regression only",
+    "validation": "Chronological validation period evaluated after inner temporal-CV selection; no test data used.",
+    "feature_selection": "Univariate mutual information ranking fitted separately within each TimeSeriesSplit training fold; k selected by mean inner-fold ROC-AUC; final ranking refit on all training rows.",
+    "encoding_experiment": "OrdinalEncoder for categorical features with >3 distinct non-null values in the relevant training fit; OneHotEncoder for <=3. Unknown categories map to -1 for ordinal features or are ignored for one-hot features.",
+    "selection_limitations": "Mutual information is univariate and may miss interactions; ordinal encoding of nominal categories imposes artificial order and equal spacing. This is an experiment, not an assumed improvement.",
+    "test_set": "Not used. Previously inspected chronological test window remains non-pristine and is deliberately excluded."
+  },
+  "preparation": {
+    "source_shipment_rows": 5028,
+    "exact_duplicate_rows_collapsed": 8,
+    "ambiguous_shipment_id_groups_excluded": 20,
+    "ambiguous_shipment_id_rows_excluded": 40,
+    "raw_missing_actual_arrival_rows": 349,
+    "missing_actual_arrival_rows_excluded_after_duplicate_quarantine": 346,
+    "missing_arrival_rows_in_exact_duplicate_copies_removed": 1,
+    "missing_arrival_rows_in_ambiguous_id_quarantine": 2,
+    "missing_booking_or_planned_schedule_rows_excluded": 0,
+    "invalid_origin_or_destination_port_rows_excluded": 89,
+    "negative_weight_predictors_set_missing": 31,
+    "non_positive_container_count_predictors_set_missing": 21,
+    "eligible_labelled_rows": 4545,
+    "positive_rows": 1836,
+    "negative_rows": 2709,
+    "positive_rate": 0.403960396039604,
+    "booking_date_min": "2024-06-01T07:00:00",
+    "booking_date_max": "2025-10-14T19:00:00"
+  },
+  "split": {
+    "strategy": "chronological_by_booking_date",
+    "fractions_requested": {
+      "train": 0.7,
+      "validation": 0.15,
+      "test": 0.15000000000000005
+    },
+    "partitions": {
+      "train": {
+        "rows": 3181,
+        "positive_rows": 1295,
+        "positive_rate": 0.4071046840616158,
+        "booking_date_min": "2024-06-01T07:00:00",
+        "booking_date_max": "2025-05-18T16:00:00"
+      },
+      "validation": {
+        "rows": 675,
+        "positive_rows": 268,
+        "positive_rate": 0.397037037037037,
+        "booking_date_min": "2025-05-18T19:00:00",
+        "booking_date_max": "2025-08-03T00:00:00"
+      },
+      "test": {
+        "rows": 689,
+        "positive_rows": 273,
+        "positive_rate": 0.39622641509433965,
+        "booking_date_min": "2025-08-03T07:00:00",
+        "booking_date_max": "2025-10-14T19:00:00"
+      }
+    }
+  },
+  "encoding_policy_full_train": {
+    "cardinality_on_fit_data": {
+      "origin_port": 25,
+      "destination_port": 25,
+      "cargo_type": 10,
+      "origin_region": 4,
+      "destination_region": 4
+    },
+    "ordinal_encoded_gt_3": [
+      "origin_port",
+      "destination_port",
+      "cargo_type",
+      "origin_region",
+      "destination_region"
+    ],
+    "one_hot_encoded_le_3": []
+  },
+  "transformed_training_matrix_profiles": {
+    "all_one_hot": {
+      "shape": [
+        3181,
+        80
+      ],
+      "nonzero_values": 54077,
+      "density": 0.2125
+    },
+    "mixed_ordinal_gt3": {
+      "shape": [
+        3181,
+        17
+      ],
+      "nonzero_values": 54077,
+      "density": 1.0
+    }
+  },
+  "mutual_information_ranking_train_only": [
+    {
+      "feature": "planned_departure_month",
+      "mutual_information": 0.0205416531168654
+    },
+    {
+      "feature": "weight_tons",
+      "mutual_information": 0.013047969615505695
+    },
+    {
+      "feature": "planned_departure_day_of_week",
+      "mutual_information": 0.010226788249588559
+    },
+    {
+      "feature": "origin_port",
+      "mutual_information": 0.005101139760448202
+    },
+    {
+      "feature": "booking_month",
+      "mutual_information": 0.0033289049348512734
+    },
+    {
+      "feature": "destination_port",
+      "mutual_information": 0.002545054046380911
+    },
+    {
+      "feature": "cargo_type",
+      "mutual_information": 0.0017739461647577892
+    },
+    {
+      "feature": "booking_lead_days",
+      "mutual_information": 0.0011217933896661147
+    },
+    {
+      "feature": "destination_region",
+      "mutual_information": 0.0004290407618365577
+    },
+    {
+      "feature": "origin_region",
+      "mutual_information": 0.0003414786330337427
+    },
+    {
+      "feature": "booking_day_of_week",
+      "mutual_information": 0.0
+    },
+    {
+      "feature": "container_count",
+      "mutual_information": 0.0
+    },
+    {
+      "feature": "destination_congestion_score",
+      "mutual_information": 0.0
+    },
+    {
+      "feature": "origin_congestion_score",
+      "mutual_information": 0.0
+    },
+    {
+      "feature": "planned_transit_days",
+      "mutual_information": 0.0
+    }
+  ],
+  "feature_selection_inner_temporal_cv": [
+    {
+      "k": 3,
+      "fold_roc_auc": [
+        0.518770649406922,
+        0.47218490189557705,
+        0.5431049935979513
+      ],
+      "mean_roc_auc": 0.5113535149668168,
+      "std_roc_auc": 0.029424199385825706
+    },
+    {
+      "k": 5,
+      "fold_roc_auc": [
+        0.5156360017331961,
+        0.49463252411040903,
+        0.4716101152368758
+      ],
+      "mean_roc_auc": 0.49395954702682693,
+      "std_roc_auc": 0.017979791323649824
+    },
+    {
+      "k": 8,
+      "fold_roc_auc": [
+        0.5212451930888805,
+        0.5008912537412704,
+        0.48615877080665815
+      ],
+      "mean_roc_auc": 0.502765072545603,
+      "std_roc_auc": 0.01438512321405255
+    },
+    {
+      "k": 10,
+      "fold_roc_auc": [
+        0.5182865731462926,
+        0.4999866977053542,
+        0.48699103713188224
+      ],
+      "mean_roc_auc": 0.5017547693278429,
+      "std_roc_auc": 0.012837372564872222
+    },
+    {
+      "k": 12,
+      "fold_roc_auc": [
+        0.5198911336185885,
+        0.49940139674093775,
+        0.48173495518565945
+      ],
+      "mean_roc_auc": 0.5003424951817285,
+      "std_roc_auc": 0.015591402285828868
+    },
+    {
+      "k": 15,
+      "fold_roc_auc": [
+        0.5293356984238747,
+        0.493568340538743,
+        0.4828809218950064
+      ],
+      "mean_roc_auc": 0.5019283202858746,
+      "std_roc_auc": 0.019865019701577828
+    }
+  ],
+  "selected_k": 3,
+  "selected_features": [
+    "planned_departure_month",
+    "weight_tons",
+    "planned_departure_day_of_week"
+  ],
+  "validation_results": {
+    "all_one_hot_full_features": {
+      "rows": 675,
+      "roc_auc": 0.48097656679746237,
+      "average_precision": 0.38553861522338584,
+      "log_loss": 0.6886163724710846,
+      "predicted_class_counts": {
+        "0": 601,
+        "1": 74
+      },
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      }
+    },
+    "mixed_ordinal_gt3_full_features": {
+      "rows": 675,
+      "roc_auc": 0.48381862187832336,
+      "average_precision": 0.39726827387585695,
+      "log_loss": 0.6781105166555925,
+      "predicted_class_counts": {
+        "0": 669,
+        "1": 6
+      },
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      }
+    },
+    "mixed_ordinal_gt3_mutual_information_selected": {
+      "rows": 675,
+      "roc_auc": 0.47531537643477945,
+      "average_precision": 0.40214117524004117,
+      "log_loss": 0.6739186290411125,
+      "predicted_class_counts": {
+        "0": 675,
+        "1": 0
+      },
+      "actual_class_counts": {
+        "0": 407,
+        "1": 268
+      }
+    }
+  },
+  "random_50_percent_baseline_validation": {
+    "rows": 675,
+    "roc_auc": 0.4542704169569841,
+    "average_precision": 0.3625294033243933,
+    "log_loss": 1.0632333187914227,
+    "predicted_class_counts": {
+      "0": 331,
+      "1": 344
+    },
+    "actual_class_counts": {
+      "0": 407,
+      "1": 268
+    },
+    "expected_roc_auc": 0.5,
+    "expected_average_precision": 0.397037037037037,
+    "seed": 42,
+    "strategy": "independent uniform random score; positive if score >= 0.5"
+  },
+  "chance_references": {
+    "roc_auc": 0.5,
+    "average_precision_validation_prevalence": 0.397037037037037
+  },
+  "interpretation": "Compare validation results to the all-one-hot reference and no-skill references. Do not promote the experiment unless the gain is material and stable; all comparisons share the same single Logistic Regression family."
+}
